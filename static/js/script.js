@@ -20,3 +20,7 @@ $(document).ready(function () {
     }
   });
 });
+// CATEGORY SELECT
+$(document).ready(function () {
+  $('select').formSelect();
+});
