@@ -1,30 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% for task in tasks %}
-{{ task.category_name }}<br>
-{{ task.task_name }}<br>
-{{ task.task_description }}<br>
-{{ task.due_date }}<br>
-{{ task.is_urgent }}<br>
-{% endfor %}
-
 <ul class="collapsible">
+  {% for task in tasks %}
   <li>
-    <div class="collapsible-header #607d8b blue-grey white-text"><i
-        class="fas fa-caret-down #607d8b blue-grey"></i>First</div>
-    <div class="collapsible-body"><span class="">Lorem ipsum dolor sit amet.</span></div>
+    <div class="collapsible-header #607d8b blue-grey white-text">
+      <i class="fas fa-caret-down #607d8b blue-grey"></i>
+      <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
+      {% if task.is_urgent == "on" %}
+      <i class="fas fa-exclamation-circle tooltipped" data-position="bottom" data-tooltip="Urgent"></i>
+      {% endif %}
+    </div>
+    <div class="collapsible-body">
+      <strong>{{ task.category_name }}</strong>
+      <p>{{ task.task_description }}</p>
+    </div>
   </li>
-  <li>
-    <div class="collapsible-header #607d8b blue-grey white-text"><i
-        class="fas fa-caret-down #607d8b blue-grey"></i>Second</div>
-    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-  </li>
-  <li>
-    <div class="collapsible-header #607d8b blue-grey white-text"><i
-        class="fas fa-caret-down #607d8b blue-grey"></i>Third</div>
-    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-  </li>
+  {% endfor %}
 </ul>
 
 {% endblock %}
