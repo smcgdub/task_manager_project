@@ -33,7 +33,7 @@ def register():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            flash("Username already exists")
+            flash("Username already exists, please choose another")
             return redirect(url_for("register"))
 
         register = {
@@ -66,7 +66,7 @@ def login():
                     "profile", username=session["user"]))
             else:
                 # invalid password match
-                flash("Incorrect Username and/or Password")
+                flash("Incorrect username and/or pkassword")
                 return redirect(url_for("login"))
 
         else:
